@@ -1,0 +1,19 @@
+---
+- name: Check if Apache is running
+  command: service {{ service }} status
+  ignore_errors: yes
+  changed_when: false
+  register: service_apache_status
+- debug:
+    msg: "{{ service }} is running"
+  when: service_apache_status.rc == 0
+- debug:
+    msg: "{{ service }} is not running"
+  when: service_apache_status.rc != 0
+- name: start the service {{ service }}
+  command: service {{ service }} start
+  when: service_apache_status.rc != 0
+- name: copy the stadard config file
+  copy: remote_src=True src=/root/zoo.cfg dest=/etc/zookeeper/conf/zoo.cfg
+- name: restart the service
+  service: name={{ service }} state=restarted

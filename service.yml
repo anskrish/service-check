@@ -1,0 +1,23 @@
+- name: checking
+  hosts: cli
+  roles:
+     - service
+#  tasks:
+#       - name: Check if Apache is running
+#         command: service apache2 status
+#         ignore_errors: yes
+#         changed_when: false
+#         register: service_apache_status
+#       - debug:
+#           msg: "apache2 is running"
+#         when: service_apache_status.rc == 0
+#       - debug:
+#           msg: "apache2 is not running"
+#         when: service_apache_status.rc != 0
+#       - name: start the service
+#         command: service apache2 start
+#         when: service_apache_status.rc != 0
+#       - name: copy the stadard config file
+#         copy: remote_src=True src=/apache2.conf dest=/etc/apache2/apache2.conf
+#       - name: restart the service
+#         service: name=apache2 state=restarted
