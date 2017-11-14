@@ -13,7 +13,7 @@
 - name: start the service {{ service }}
   command: service {{ service }} start
   when: service_apache_status.rc != 0
-- name: copy the stadard config file
-  copy: remote_src=True src=/root/zoo.cfg dest=/etc/zookeeper/conf/zoo.cfg
-- name: restart the service
-  service: name={{ service }} state=restarted
+#- name: copy the stadard config file
+#  copy: remote_src=True src=/root/zoo.cfg dest=/etc/zookeeper/conf/zoo.cfg
+#- name: restart the service
+#  service: name={{ service }} state=restarted
