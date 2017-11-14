@@ -1,5 +1,5 @@
 - name: checking
-  hosts: cli
+  hosts: new-server1
   roles:
      - service
 #  tasks:
