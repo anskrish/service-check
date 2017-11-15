@@ -10,7 +10,7 @@
 - debug:
     msg: "{{ service }} is not running"
   when: service_apache_status.rc != 0
-- name: start the service {{ service }}
+- name: start the service after check {{ service }}
   command: service {{ service }} start
   when: service_apache_status.rc != 0
 #- name: copy the stadard config file
